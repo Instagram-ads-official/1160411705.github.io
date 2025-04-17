@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conectando con WhatsApp...</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conectando con WhatsApp...</title>
 
-    <!-- Meta Pixel -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-
-        fbq('init', '9473507609359104'); // Nuevo ID del Pixel
-        fbq('track', 'ViewContent');      // Evento legítimo de Facebook
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-             src="https://www.facebook.com/tr?id=9473507609359104&ev=ViewContent&noscript=1"/>
-    </noscript>
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '9473507609359104');
+    fbq('track', 'ViewContent');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=9473507609359104&ev=ViewContent&noscript=1"/>
+  </noscript>
 </head>
 <body>
-    <h1>Redirigiendo a WhatsApp…</h1>
+  <h1>Redirigiendo a WhatsApp…</h1>
 
-    <script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
-        /**
-         * Extrae el parámetro fbclid de la URL.
-         * @returns {string|null}
-         */
-        function getFbclid() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('fbclid');
-        }
+      // Captura del parámetro fbclid
+      const params = new URLSearchParams(window.location.search);
+      const fbclid = params.get('fbclid') || 'no disponible';
 
-        // Tu texto principal
-        const mensajePrincipal = "Hola, vengo por el bono de bienvenida del 𝟐𝟎𝟎%, ¿me creas un usuario?";
-        // Captura el fbclid o deja vacío si no existe
-        const fbclid = getFbclid() || '';
-        // Construye el mensaje con salto de línea (\n)
-        const mensaje = `${mensajePrincipal}\nMi Código Promocional es: ${fbclid}`;
+      // Texto principal y construcción del mensaje con salto de línea
+      const mensajePrincipal = 'Hola, vengo por el bono de bienvenida del 𝟐𝟎𝟎%, ¿me creas un usuario?';
+      const mensaje = `${mensajePrincipal}\nMi Código Promocional es: ${fbclid}`;
 
-        // Tu número de WhatsApp (formato internacional, sin espacios ni signos)
-        const whatsappNumber = "5491160411705";
+      // Número de WhatsApp y URL final
+      const whatsappNumber = '5491160411705';
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
 
-        // URL final de WhatsApp con el texto codificado
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
-
-        // Redirige automáticamente
-        window.location.href = whatsappURL;
+      // Redirigir automáticamente
+      window.location.href = whatsappURL;
     });
-    </script>
+  </script>
 </body>
 </html>
